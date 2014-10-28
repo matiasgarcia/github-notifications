@@ -1,6 +1,8 @@
 body{
     font-family: Arial, sans-serif;
-    font-size: 0.85em;
+    font-size: 0.82em;
+    padding:0;
+    margin:0;
 }
 
 h3{
@@ -17,9 +19,10 @@ h4{
 }
 
 .container{
-    width: 200px;
+    width: 260px;
     max-height:350px;
-    border: 1px solid grey;
+    /*border: 1px solid grey;*/
+    margin: 2px;
     padding: 5px;
 }
 
@@ -31,9 +34,32 @@ h4{
     padding-top:5px;
 }
 
+.footer a{
+	font-weight:bold;
+	text-decoration:none;
+	color: #0000BB;
+}	
+
+.notification{
+    margin:10px 0px;
+	cursor:pointer;
+}
+
+.notification-header{
+	vertical-align: middle;
+	margin-bottom:2px;
+}
+
+.notification-body{
+    
+}
+.notification-footer{
+	
+}
+
 .author-img{
-    float:left;
     margin-right:3px;
+	vertical-align:middle;
 }
 
 .author{
@@ -45,6 +71,22 @@ h4{
 }
 
 .age{
+	color:grey;
+	display:block;
     font-size:0.9em;
-    color:grey
+	margin-top:2px;
+    
 }
+
+.status-open{
+	color: #6cc644;
+}
+
+.status-closed{
+	color: #bd2c00;
+}
+
+.status-merged{
+	color: #6e5494;
+}
+
