@@ -19,7 +19,7 @@ var buildNotifications = function( data ) {
 
 	notification = {
 		id: notifications.id,
-		updated_at: Date.new(notifications.updated_at),
+		updated_at: new Date(notifications.updated_at),
 		subject: {
 			title: subject.title,
 			type: notifications.subject.type,
