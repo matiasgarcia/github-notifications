@@ -1,13 +1,11 @@
 var token = "";
 var access_token_param = "?access_token="+token;
-
 var notificationsEndpoint = "https://api.github.com/notifications"+access_token_param;
 
 var buildNotifications = function( data ) {
   data.map(function(notifications){
   	var repository = notifications.repository;
 	var	subjectEndpoint = notifications.subject.url + access_token_param;
-
 	var subject = undefined;
 
 	$.ajax({
@@ -19,9 +17,9 @@ var buildNotifications = function( data ) {
 		}
 	});
 
-	built_object = {
+	notification = {
 		id: notifications.id,
-		updated_at: notifications.updated_at,
+		updated_at: Date.new(notifications.updated_at),
 		subject: {
 			title: subject.title,
 			type: notifications.subject.type,
@@ -39,7 +37,7 @@ var buildNotifications = function( data ) {
 		},
 	};
 
-	return built_object;
+	return notification;
   });
 };
 
