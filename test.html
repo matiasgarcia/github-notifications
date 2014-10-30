@@ -1,18 +1,29 @@
 <!doctype html>
-    <head>
-        <title>Github Notifications</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-        <link rel="stylesheet" type="text/css" href="css/panel.css" />
-        <link rel="stylesheet" type="text/css" href="css/octicons/octicons.css" />
-        <script src="lib/jquery-2.1.1.js"></script>
-<script src="lib/underscore-1.7.0.js"></script>
-<script src="lib/backbone-1.1.2.js"></script>
-<script src="js/github-connector.js"></script>
-    </head>
-    <body>
-    	<div id="container"></div>
-    </body>
-    </html>
+<head>
+    <title>Github Notifications</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <link rel="stylesheet" type="text/css" href="css/panel.css" />
+    <link rel="stylesheet" type="text/css" href="css/octicons/octicons.css" />
+    <script src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/knockout-3.2.0.js"></script>
+    <script src="js/github-connector.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="notification" data-bind="foreach: notifications">
+            <div class="notification-header">
+                <img class="author-img" data-bind="attr: { src: user.avatar_url }">
+                <span class="author" data-bind="text: user.login"></span>
+                <span class="action">generó un </span><span class="action" data-bind="text: subject.type"/>
+            </div>
+                <div class="notification-body">
+                    <span class="octicon octicon-issue-opened status-open" data-bind="text: subject.title"></span>
+                    <span class="age">hace X tiempo</span>
+                </div> 
+            </div>
+        </div>
+</body>
+</html>
 
 
 

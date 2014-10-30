@@ -1,53 +1,52 @@
 var token = "";
-var access_token_param = "?access_token="+token;
-var notificationsEndpoint = "https://api.github.com/notifications"+access_token_param;
+var notificationsEndpoint = "https://api.github.com/notifications";
 
-var buildNotifications = function( data ) {
-	data.map(function(notifications){
-		var repository = notifications.repository;
-		var	subjectEndpoint = notifications.subject.url + access_token_param;
-		var subject = undefined;
-
-		$.ajax({
-			url: subjectEndpoint,
-			type: 'GET',
-			async: false,
-			success: function(data){
-				subject = data;
-			}
-		});
-
-		if (subject){
-			notification = {
-				id: notifications.id,
-				updated_at: new Date(notifications.updated_at),
-				subject: {
-					title: subject.title,
-					type: notifications.subject.type,
-					body: subject.body,
-					html_url: subject.html_url
-				},
-				user: {
-					login: subject.user.login,
-					avatar_url: subject.user.avatar_url
-				},
-				repository: {
-					id: repository.id,
-					name: repository.name,
-					full_name: repository.full_name
-				},
-			};
-
-			var view = '<div class="notification"><div class="notification-header"><img class="author-img" src="'+notification.user.avatar_url+'"><span class="author">'+notification.user.login+'</span><span class="action">'+notification.subject.type+'<span></div><div class="notification-body"><span class="octicon octicon-issue-opened status-open"></span>'+notification.subject.body+'<span class="age">hace X tiempo</span></div></div>';
-
-			$("#container").append(view);
-		}
-	});
+function appendAccessToken(endPoint, token){
+	return endPoint + "?access_token=" + token;
 };
 
-$( document ).ready(function() {
+/*Notification object*/
+Notification = function(data) {
+	repository = data.repository;
+	subjectEndpoint = data.subject.url;
+	subject = undefined;
+
 	$.ajax({
-		url: notificationsEndpoint,
+		url: appendAccessToken(subjectEndpoint, token),
+		type: 'GET',
+		async: false,
+		success: function(data){
+			subject = data;
+		}
+	});
+
+	this.id = data.id;
+	this.updatedAt = new Date() - new Date(data.updated_at)
+	this.subject = {
+		title: subject.title,
+		type: data.subject.type,
+		body: subject.body,
+		html_url: subject.html_url
+	};
+	this.user = {
+		login: subject.user.login,
+		avatar_url: subject.user.avatar_url
+	};
+	this.repository = {
+		id: repository.id,
+		name: repository.name,
+		full_name: repository.full_name
+	};
+}
+
+/*Load page*/
+$( document ).ready(function() {
+	var viewModel = {
+		notifications: []
+	};
+
+	$.ajax({
+		url: appendAccessToken(notificationsEndpoint, token),
 		type: 'GET',
 		async: false,
 		cache: false,
@@ -55,6 +54,12 @@ $( document ).ready(function() {
 		error: function(){
 			return true;
 		},
-		success: buildNotifications
+		success: function( data ) {
+			data.forEach(function(notification){
+				viewModel.notifications.push(new Notification(notification));
+			});
+		}
 	});
+
+    ko.applyBindings(viewModel);
 });
