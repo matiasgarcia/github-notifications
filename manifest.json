@@ -6,12 +6,10 @@
     "default_icon": "icon.png",
     "default_popup": "panel.html"
   },
+  "background": { 
+      "scripts": ["lib/panel.js"] 
+    },
   "options_page": "options.html",
-  "permissions": [  "storage","tabs", "https://github.com/login/oauth/authorize",
-      "https://api.github.com/notifications",
-      "https://www.google.com/accounts/OAuthGetRequestToken",
-      "https://www.google.com/accounts/OAuthAuthorizeToken",
-      "https://www.google.com/accounts/OAuthGetAccessToken"
-  ],
+  "permissions": [  "alarms", "storage", "tabs", "https://api.github.com/notifications" ],
   "manifest_version": 2
 }
