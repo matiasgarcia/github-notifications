@@ -7,7 +7,7 @@
     "default_popup": "panel.html"
   },
   "background": { 
-      "scripts": ["lib/github-connector.js", "lib/panel.js"] 
+      "scripts": ["lib/github-connector.js", "lib/panel.js", "lib/alarms.js"] 
     },
   "options_page": "options.html",
   "permissions": [  "alarms", "storage", "tabs", 
