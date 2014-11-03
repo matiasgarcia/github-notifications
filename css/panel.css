@@ -6,14 +6,14 @@ body{
 }
 
 h3{
-    margin:5px 0;
+    margin:5px 5px;
     padding:0;
     border-bottom:1px solid grey;
    
 }
 
 h4{
-    margin:5px 0;
+    margin:5px 5px;
     padding:0;
     border-bottom:1px dashed grey;
 }
@@ -22,32 +22,35 @@ h4{
     width: 260px;
     max-height:350px;
     /*border: 1px solid grey;*/
-    margin: 2px;
-    padding: 5px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .footer{
     border-top:1px solid grey;
+    clear:both;
     font-size:0.8em;
     margin-top:5px;
     text-align:center;
     padding-top:5px;
+    background-color:#DDD;
 }
 
 .footer a{
-	font-weight:bold;
-	text-decoration:none;
-	color: #0000BB;
+    font-weight:bold;
+    text-decoration:none;
+    color: #0000BB;
+    
 }	
 
 .notification{
-    margin:10px 0px;
-	cursor:pointer;
+    margin:10px 5px;
+    cursor:pointer;
 }
 
 .notification-header{
-	vertical-align: middle;
-	margin-bottom:2px;
+    vertical-align: middle;
+    margin-bottom:2px;
 }
 
 .notification-body{
@@ -59,8 +62,8 @@ h4{
 
 .author-img{
     margin-right:3px;
-	vertical-align:middle;
-	width:20px;
+    vertical-align:middle;
+    width:20px;
 }
 
 .author{
@@ -72,22 +75,29 @@ h4{
 }
 
 .age{
-	color:grey;
-	display:block;
+    color:grey;
+    display:block;
     font-size:0.9em;
-	margin-top:2px;
-    
+    margin-top:2px;
 }
 
 .status-open{
-	color: #6cc644;
+    color: #6cc644;
 }
 
 .status-closed{
-	color: #bd2c00;
+    color: #bd2c00;
 }
 
 .status-merged{
-	color: #6e5494;
+    color: #6e5494;
+}
+
+.update-now{
+    cursor:pointer;
+    float:right;
+    font-size:0.8em;
+    font-weight:normal;
+    text-decoration: underline;
 }
 

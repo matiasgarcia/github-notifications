@@ -10,6 +10,9 @@
       "scripts": ["lib/panel.js"] 
     },
   "options_page": "options.html",
-  "permissions": [  "alarms", "storage", "tabs", "https://api.github.com/notifications" ],
+  "permissions": [  "alarms", "storage", "tabs", 
+      "https://api.github.com/notifications",
+      "https://github.com/notifications"
+    ],
   "manifest_version": 2
 }
